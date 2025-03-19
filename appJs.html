@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alerta Personalizada</title>
+    <style>
+      .alert1 {
+        display: flex;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 20px;
+        z-index: 999;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      .alert2 {
+        display: flex;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ccc;
+        background-color: black;
+        padding: 20px;
+        z-index: 999;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      .text1 {
+        color: black;
+      }
+      .text2 {
+        color: white;
+      }
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+      }
+      .close-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+    <div class="alert1" id="myAlert">
+      <p class="text1" id="text"></p>
+      <button class="close-btn" onclick="closeAlert()">Cerrar</button>
+      <button class="switch color" onclick="switchColor()">
+        Cambiar color
+      </button>
+    </div>
+    <input id="inputText" type="text" name="" id="" />
+    <button class="buttonSC" onclick="showAlert()">Enter</button>
+
+    <script>
+      function showAlert() {
+        const Input = document.getElementById("inputText").value;
+        document.getElementById("text").innerText = Input;
+        document.getElementById("myAlert").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function switchColor() {
+        const myAlert = document.getElementById("myAlert");
+        const text = document.getElementById("text");
+
+        if (myAlert.className === "alert1") {
+          myAlert.className = "alert2";
+          text.className = "text2";
+        } else {
+          myAlert.className = "alert1";
+          text.className = "text1";
+        }
+      }
+
+      function closeAlert() {
+        document.getElementById("myAlert").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
